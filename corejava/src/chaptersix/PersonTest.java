@@ -17,6 +17,9 @@ public class PersonTest {
          */
         for (Person p : people){
             System.out.println(p.getName()+ ","+p.getDescription());
+//          toString()为重要的调试方法，建议每个类都加。
+//          如果x为任意一个对象，且调用system.out.println(x); println()会直接调用x.toString()
+            System.out.println("p.toString():"+ p);
         }
     }
 }
@@ -32,6 +35,10 @@ abstract class Person {
     public String getName(){
         return name;
     }
+    @Override  public String toString(){
+//      最好通过getClass().getName()获得类名的字符串而不是直接写"xx类名".
+        return getClass().getName()+ "[name= " + name + "]";
+    }
 }
 
 class Student extends Person {
@@ -42,5 +49,8 @@ class Student extends Person {
     }
     @Override public String getDescription(){
         return String.format("a student majoring in %s", major);
+    }
+    @Override public String toString() {
+        return super.toString()+ "[major= " + major + "]";
     }
 }
