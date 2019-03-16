@@ -20,6 +20,7 @@ public class ManagerTest {
         staff[2] = new Employee("jake",4000,1990,12,15);
         for (Employee e: staff){
             System.out.println("name = "+ e.getName() + ",salary = " + e.getSalary());
+            System.out.println("e.toString():"+ e);
         }
     }
 }
@@ -61,6 +62,9 @@ class Employee extends Person{
         double raise = salary * byPercent / 100;
         salary += raise;
     }
+    @Override public String toString(){
+        return super.toString() + "[salary= "+ salary + " hireDay= "+ hireDay + "]";
+    }
 }
 
 class Manager extends Employee {
@@ -70,13 +74,15 @@ class Manager extends Employee {
         bonus = 0;
     }
 
-    @Override
-    public double getSalary(){
+    @Override public double getSalary() {
         double baseSalary = super.getSalary();
         return baseSalary + bonus;
     }
-    public void setBonus(double bonus){
+    public void setBonus(double bonus) {
         this.bonus = bonus;
+    }
+    @Override public String toString() {
+        return super.toString() + "[bonus= " + bonus + "]";
     }
 }
 
