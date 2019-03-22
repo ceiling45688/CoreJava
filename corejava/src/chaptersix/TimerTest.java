@@ -28,7 +28,8 @@ class TimePrinter implements ActionListener {
         Date now = new Date();
         System.out.println("At the tone , the time is " + now);
         /**
-         *  Toolkit是一个控件，为抽象类无法实例化，用getDefaultToolkit()返回Toolkit类的对象
+         *  Toolkit是一个控件，工具箱包含有关GUI环境的信息
+         *  为抽象类无法实例化，用getDefaultToolkit()返回Toolkit类的对象
          *  这里使用beep()方法返回 “beep”声音
          */
         Toolkit.getDefaultToolkit().beep();
