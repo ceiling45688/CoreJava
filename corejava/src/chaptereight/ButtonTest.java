@@ -52,7 +52,29 @@ class ButtonFrame extends JFrame {
         yellowButton.addActionListener(yellowAction);
         blueButton.addActionListener(blueAction);
         redButton.addActionListener(redAction);
-
+/**
+ *      上面代码因为重复较多，可以简化，
+ *
+ *      public void makeButton(String name, final Color backgroundColor){
+ *          JButton button = new JButton(name);
+ *          buttonPanel.add(button);
+ *
+ *          ColorAction action = new ColorAction(backgroundColor);
+ *          button.addActionListener(action);
+ *      }
+ *      下面使用的监听器因为内容简单也可以简化为匿名内部类。(这样更好)
+ *       public void makeButton(String name, final Color backgroundColor){
+ *           JButton button = new JButton(name);
+ *           buttonPanel.add(button);
+ *           button.addActionListener(new ActionListener()
+ *           {
+ *              public void actionPerformed(ActionEvent event){
+ *                  buttonPanel.setBackground(backgroundColor);
+ *              }
+ *           });
+ *       }
+ *
+ */
     }
 //        为了让ColorAction可以访问buttonPanel，这里使用内部类；
 //        监听器必须实现ActionListener接口，且应包含actionPerformed方法
