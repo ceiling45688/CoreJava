@@ -7,6 +7,10 @@ import java.awt.event.ActionEvent;
 /**
  * @author ceiling
  * @date 2019/4/7
+ * tips:动作响应按钮、菜单项、点击键盘注意点：
+ * 1）实现一个扩展AbstractAction类的类，多个相关的动作可以使用一个类。
+ * 2）击键触发需要得到顶层组件的WHEN_ANCESTOR_OF_FOCUS_COMPONENT输入映射，再将击键的KeyStroke.getKeyStroke（）,即（击键，动作键描述字符串）添加到输入映射中
+ * 得到顶层组件的动作映射，将（动作键描述字符串，动作对象）添加到动作映射中（这里使用ActionMap）
  */
 public class ActionTest {
     public static void main(String[] args){
@@ -38,7 +42,16 @@ class ActionFrame extends JFrame {
         buttonPanel.add(new JButton(greenAction));
 
         add(buttonPanel);
-
+//      动作与键盘关联
+//        InputMap 是映射keystroke对象到任一对象上，然后需要用actionmap类将对象映射到动作上
+        InputMap imap = buttonPanel.getInputMap(JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT);
+        imap.put(KeyStroke.getKeyStroke("ctrl Y"),"panel.yellow");
+        imap.put(KeyStroke.getKeyStroke("ctrl B"),"panel.blue");
+        imap.put(KeyStroke.getKeyStroke("ctrl G"),"panel.green");
+        ActionMap amap = buttonPanel.getActionMap();
+        amap.put("panel.yellow",yellowAction);
+        amap.put("panel.blue",blueAction);
+        amap.put("panel.green",greenAction);
 
     }
 
