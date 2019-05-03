@@ -2,4 +2,5 @@
 2.jar常用命令格式： jar options File1 File2 ..
 options组合： cvf 创建新的存档文件并加入文件，生成详细的输出结果， 将jar文件名指定为第二个命令行参数
               x 解压文件  t 显示内容表
-
+3.jar文件包括类文件、图像、其他资源，清单文件MANIFEST.MF（用于描述归档特征）
+最基本标准：Manifest-Version：1.0 （其他条目需起始于明为Name的条目，节与节之间用空行分开）
