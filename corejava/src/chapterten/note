@@ -1,0 +1,5 @@
+1.JAR（java归档文件），使用ZIP压缩格式。
+2.jar常用命令格式： jar options File1 File2 ..
+options组合： cvf 创建新的存档文件并加入文件，生成详细的输出结果， 将jar文件名指定为第二个命令行参数
+              x 解压文件  t 显示内容表
+
